@@ -4,7 +4,7 @@ export const siteConfig = {
   title:
     "Ingeniero en Ciencia de la Computación y Músico | Construyendo tecnología con impacto público y social",
   description:
-    "Landing oficial de Ale Gómez (Alejandro José Gómez Hernández), ingeniero guatemalteco que diseña y construye tecnología útil, clara y con impacto real.",
+    "Sitio oficial de Ale Gómez (Alejandro José Gómez Hernández), ingeniero guatemalteco que diseña y construye tecnología útil, clara y con impacto real.",
   siteUrl: "https://aleg001.com",
   keywords: [
     "Ale Gómez",
