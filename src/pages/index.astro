@@ -13,6 +13,7 @@ import "../styles/global.css";
 <html lang="es">
   <head>
     <meta charset="utf-8" />
+    <title> {siteConfig.fullName} </title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
@@ -44,7 +45,7 @@ import "../styles/global.css";
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
-    <title>{siteConfig.name} ({siteConfig.fullName}) · {siteConfig.title}</title>
+
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
@@ -53,7 +54,7 @@ import "../styles/global.css";
         name: siteConfig.fullName,
         alternateName: siteConfig.name,
         url: siteConfig.siteUrl,
-        jobTitle: "Ingeniero en Computación y Full Stack Developer",
+        jobTitle: "Ingeniero en Ciencia de la Computación y Músico",
         nationality: "Guatemalteco",
         alumniOf: "Universidad del Valle de Guatemala",
         sameAs: [siteConfig.social.github].filter(Boolean),
