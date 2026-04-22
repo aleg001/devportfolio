@@ -28,6 +28,13 @@ import "../styles/global.css";
     <meta property="og:title" content={`${siteConfig.name} · ${siteConfig.title}`} />
     <meta property="og:description" content={siteConfig.description} />
     <meta property="og:url" content={`${siteConfig.siteUrl}${Astro.url.pathname}`} />
+
+    <meta property="og:image:secure_url" content={`${siteConfig.siteUrl}${siteConfig.ogImage}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ale Gómez, ingeniero en ciencia de la computación y músico en Guatemala" />
+
+
     <meta
       property="og:image"
       content={`${siteConfig.siteUrl}${siteConfig.ogImage}`}
