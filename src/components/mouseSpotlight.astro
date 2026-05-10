@@ -1,0 +1,54 @@
+---
+import { siteConfig } from "../config";
+---
+
+<div
+  id="mouse-spotlight"
+  class="pointer-events-none fixed top-0 left-0 hidden md:block w-[150px] h-[150px] rounded-full opacity-0 transition-opacity duration-700"
+  style={`z-index: 1; background: radial-gradient(circle, ${siteConfig.accentColor}40 0%, ${siteConfig.accentColor}20 30%, ${siteConfig.accentColor}08 55%, transparent 75%); filter: blur(45px); transform: translate(-50%, -50%); will-change: transform, opacity;`}
+>
+</div>
+
+<script>
+  const spotlight = document.getElementById("mouse-spotlight");
+
+  if (
+    spotlight &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  ) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let blobX = mouseX;
+    let blobY = mouseY;
+    let hasMoved = false;
+    let rafId: number | null = null;
+
+    const animate = () => {
+      blobX += (mouseX - blobX) * 0.1;
+      blobY += (mouseY - blobY) * 0.1;
+      spotlight.style.transform = `translate(${blobX}px, ${blobY}px) translate(-50%, -50%)`;
+      rafId = requestAnimationFrame(animate);
+    };
+
+    document.addEventListener("mousemove", (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!hasMoved) {
+        hasMoved = true;
+        blobX = mouseX;
+        blobY = mouseY;
+        spotlight.style.opacity = "1";
+        if (rafId === null) animate();
+      }
+    });
+
+    document.addEventListener("mouseleave", () => {
+      spotlight.style.opacity = "0";
+    });
+
+    document.addEventListener("mouseenter", () => {
+      if (hasMoved) spotlight.style.opacity = "1";
+    });
+  }
+</script>

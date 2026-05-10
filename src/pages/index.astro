@@ -8,6 +8,62 @@ import Education from "../components/Education.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
+import News from "../components/News.astro";
+import MouseSpotlight from "../components/mouseSpotlight.astro";
+
+const profilePageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://aleg001.com/#profile-page",
+  url: "https://aleg001.com/",
+  name: "Ale Gómez | Alejandro José Gómez Hernández",
+  mainEntity: {
+    "@type": "Person",
+    "@id": "https://aleg001.com/#alejandro-jose-gomez-hernandez",
+    name: "Alejandro José Gómez Hernández",
+    alternateName: ["Ale Gómez", "Ale Gomez", "aleg001", "aleg_001"],
+    url: "https://aleg001.com/",
+    image: [
+      "https://aleg001.com/img/ALEJANDROGOMEZ.jpg",
+      "https://aleg001.com/img/AlejandroJoseGomezHernandez.jpeg",
+      "https://aleg001.com/img/Alejandro_Gomez.jpeg",
+      "https://aleg001.com/img/AleGomez.JPG",
+    ],
+    jobTitle: ["Computer Science Engineer", "Full Stack Developer", "Musician"],
+    description:
+      "Alejandro José Gómez Hernández, also known as Ale Gómez, is a Computer Science Engineer, Full Stack Developer, and musician from Guatemala.",
+    knowsAbout: [
+      "Computer Science",
+      "Artificial Intelligence",
+      "Full Stack Development",
+      "Music",
+      "Piano",
+      "Public Technology",
+    ],
+    nationality: {
+      "@type": "Country",
+      name: "Guatemala",
+    },
+    alumniOf: [
+      {
+        "@type": "CollegeOrUniversity",
+        name: "Universidad del Valle de Guatemala",
+      },
+      {
+        "@type": "EducationalOrganization",
+        name: "Civic Tech Institute Alumni 2026",
+        description:
+          "Selected as the first Central American scholar for the Civic Tech Institute 2026, a 10-week program by Equitech Futures for emerging leaders in government, nonprofit, and social enterprise sectors focused on civic challenges, planetary health, data, AI, and advocacy for impact at scale.",
+      },
+    ],
+    sameAs: [
+      "https://github.com/aleg001",
+      "https://www.linkedin.com/in/aleg001/",
+      "https://open.spotify.com/artist/15VE9VbmAmb0R7htytJtt8",
+      "https://www.instagram.com/aleg_001/",
+    ],
+  },
+};
 ---
 
 <html lang="es">
@@ -55,18 +111,7 @@ import "../styles/global.css";
 
     <script
       type="application/ld+json"
-      set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        name: siteConfig.fullName,
-        alternateName: siteConfig.name,
-        url: siteConfig.siteUrl,
-        jobTitle: "Ingeniero en Ciencia de la Computación y Músico",
-        nationality: "Guatemalteco",
-        alumniOf: "Universidad del Valle de Guatemala",
-        sameAs: [siteConfig.social.github].filter(Boolean),
-        description: siteConfig.description,
-      })}
+      set:html={JSON.stringify(profilePageJsonLd)}
     >
     </script>
   </head>
@@ -82,12 +127,14 @@ import "../styles/global.css";
     </script>
 
   <body>
+      <MouseSpotlight />
     <Header />
     <main>
       <Hero />
       <About />
       <Projects />
       <Experience />
+      <News />
       <Education />
     </main>
     <Footer />

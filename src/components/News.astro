@@ -1,0 +1,103 @@
+---
+import { siteConfig } from "../config";
+const hasNews = siteConfig.news && siteConfig.news.length > 0;
+const recentNews = hasNews ? siteConfig.news.slice(0, 3) : [];
+---
+
+{
+  hasNews && (
+    <section id="news" class="p-8 sm:p-12 md:p-16 lg:p-24">
+      <div class="flex items-end justify-between gap-8 mb-12 md:mb-16">
+        <div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+            En los medios
+          </h2>
+          <div
+            class="w-[75px] h-[5px] mt-2 rounded-full"
+            style={`background-color: ${siteConfig.accentColor}`}
+          />
+        </div>
+        <div
+          class="hidden md:block flex-1 h-px"
+          style={`background-color: ${siteConfig.accentColor}; opacity: 0.2;`}
+        />
+        <span class="hidden md:block text-sm font-mono text-gray-400 whitespace-nowrap">
+          {String(recentNews.length).padStart(2, "0")} / {String(recentNews.length).padStart(2, "0")}
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {recentNews.map((item, index) => {
+          const Component = item.link ? "a" : "div";
+          const linkProps = item.link
+            ? {
+                href: item.link,
+                target: "_blank",
+                rel: "noopener noreferrer",
+              }
+            : {};
+
+          return (
+            <Component
+              {...linkProps}
+              class={`group relative flex flex-col p-6 md:p-7 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 ${
+                item.link
+                  ? "hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
+                  : ""
+              }`}
+            >
+              <div
+                class="absolute top-0 left-0 right-0 h-1 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                style={`background-color: ${siteConfig.accentColor}`}
+              />
+
+              <div class="flex items-start justify-between mb-6">
+                <span
+                  class="text-4xl md:text-5xl font-bold leading-none"
+                  style={`color: ${siteConfig.accentColor}`}
+                >
+                  {item.year}
+                </span>
+                {item.link && (
+                  <svg
+                    class="w-5 h-5 text-gray-400 transition-all duration-300 group-hover:text-gray-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M7 17L17 7M17 7H7M17 7V17"
+                    />
+                  </svg>
+                )}
+              </div>
+
+              {item.source && (
+                <span class="text-xs font-mono uppercase tracking-wider text-gray-500 mb-2">
+                  {item.source}
+                </span>
+              )}
+
+              <h3 class="text-base md:text-lg font-bold text-gray-900 leading-snug flex-1">
+                {item.title}
+              </h3>
+
+              {item.tags && item.tags.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-gray-200">
+                  {item.tags.slice(0, 2).map((tag) => (
+                    <span class="text-xs font-mono text-gray-500">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </Component>
+          );
+        })}
+      </div>
+    </section>
+  )
+}

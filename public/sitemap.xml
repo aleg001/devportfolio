@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://aleg001.com/</loc>
+    <lastmod>2026-05-10</lastmod>
+    <image:image>
+      <image:loc>https://aleg001.com/img/ALEJANDROGOMEZ.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleg001.com/img/AlejandroJoseGomezHernandez.jpeg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleg001.com/img/Alejandro_Gomez.jpeg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleg001.com/img/AleGomez.JPG</image:loc>
+    </image:image>
+  </url>
+</urlset>
